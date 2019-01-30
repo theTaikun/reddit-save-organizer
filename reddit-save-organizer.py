@@ -19,9 +19,9 @@ def get_data_from_type(row):
     if row['kind']=="t1" or row['kind']=="t3":
         data=row['data']
         if row['kind']=="t1":
-            return [data['subreddit'],data['link_title'].encode("utf-8"),data['author'],data['body'].encode("utf-8"),data['link_permalink'].encode('utf-8')]
+            return [data['subreddit'],data['link_title'],data['author'],data['body'],data['link_permalink']]
         elif row['kind']=="t3":
-            return [data['subreddit'],data['title'].encode("utf-8"),data['author'],data['selftext'].encode("utf-8"),data['url'].encode('utf-8')]
+            return [data['subreddit'],data['title'],data['author'],data['selftext'],data['url']]
 
 def get_type_from_fullname(fullname):
     prefix=fullname[:2]
@@ -54,7 +54,7 @@ after=""
 collection=[]
 pages=0
 saved=0
-with open("output.csv", 'w', newline='') as csvfile:
+with open("output.csv", 'w', newline='', encoding='utf-8') as csvfile:
     spamwriter = csv.writer(csvfile, quoting=csv.QUOTE_MINIMAL)
     spamwriter.writerow(["subreddit", "title", "author", "body", "url"])
     while (after is not None):
@@ -76,7 +76,7 @@ with open("output.csv", 'w', newline='') as csvfile:
         after=formatted_response["data"]["after"]
         pages+=1
         print("=================NEW PAGE================",pages)
-        sleep(1)
+        sleep(1.001)
 print(collection)
 
 
