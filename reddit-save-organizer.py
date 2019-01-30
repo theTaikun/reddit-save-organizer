@@ -55,7 +55,7 @@ collection=[]
 pages=0
 saved=0
 with open("output.csv", 'w', newline='') as csvfile:
-    spamwriter = csv.writer(csvfile, delimiter=',',quotechar='|', quoting=csv.QUOTE_MINIMAL)
+    spamwriter = csv.writer(csvfile, quoting=csv.QUOTE_MINIMAL)
     spamwriter.writerow(["subreddit", "title", "author", "body", "url"])
     while (after is not None):
         if pages==0:
