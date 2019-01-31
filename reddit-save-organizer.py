@@ -4,24 +4,22 @@ TODO:
 2. Format CSV into readable md/pdf/html
 
 """
-import secrets
+import secrets # file with user credentials
 import json
 import requests
 import requests.auth
 import csv
-import html
 from time import sleep
 
 user=secrets.user
 passwd=secrets.passwd
 client=secrets.client
-secret=secrets.secret
-useragent=secrets.useragent
+secret=secrets.secret # lol
 
 download=True
 json_pages=6
 
-final_useragent=useragent+" by /u/theTaikun"
+final_useragent=secrets.useragent+" by /u/theTaikun"
 token =''
 
 def get_data_from_type(row):
@@ -73,7 +71,7 @@ def download_json():
         after=response.json()["data"]["after"]
         pages+=1
         
-        sleep(1.001)
+        sleep(1.001) # Reddit API requirement (60requests/min max)
     json_pages=pages
 
 def combine_json():
@@ -123,7 +121,7 @@ def create_markdown():
 {4}
 [![{5}]({5}) ]({5})
 
----
+----
 """.format(row[2],row[1],row[3],row[5],row[4],url,row[0] if row[0] is "Comment" else "Post")
                     )
             linenum+=1
