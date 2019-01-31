@@ -1,0 +1,6 @@
+*.csv
+*.json
+*.md
+
+secrets.py
+__pycache__/
