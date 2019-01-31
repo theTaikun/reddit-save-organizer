@@ -1,0 +1,5 @@
+user= 'username'
+passwd='password'
+client='app client id'
+secret='API key'
+useragent='browser user agent'
