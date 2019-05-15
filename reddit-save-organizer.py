@@ -2,7 +2,7 @@
 TODO:
 1. Allow providing JSON instead of pulling from server ever time
 2. Format CSV into readable md/pdf/html
-
+3. Get rid of json_pages global variable
 """
 import secrets # file with user credentials
 import json
@@ -19,7 +19,7 @@ secret=secrets.secret # lol
 download=True
 json_pages=6
 
-final_useragent=secrets.useragent+" by /u/theTaikun"
+final_useragent=secrets.useragent+" - \'Reddit Save Organizer\' by /u/theTaikun"
 token =''
 
 def get_data_from_type(row):
@@ -126,10 +126,10 @@ def create_markdown():
                     )
             linenum+=1
 
-download_json()
-combine_json()
-write_csv()
+def main():
+    download_json()
+    combine_json()
+    write_csv()
+    create_markdown()
 
-create_markdown()
-
-x=0
+main()
